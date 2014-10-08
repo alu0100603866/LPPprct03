@@ -14,3 +14,54 @@ Hello world
 21. ¿Cuales son las diferencias entre la ejecución del programa "Hola Mundo" con el interprete de Ruby (ruby helloWorld.rb) y el interprete interactivo del ejercicio anterior?
 
 Al ejecutarlo con el interprete vemos toda la información, vemos el puts lo que devuelve y el resultado de evaluar la expresión, mientras que al ejecutarlo con Ruby helloworld.rb solo veremos el “Hola Mundo”
+
+
+26. ¿Cual es el resultado de cada una de las siguientes operaciones?
+[1] pry(main)> puts x
+???
+=> ???
+[2] pry(main)> def hello
+[2] pry(main)* puts "Hello world"
+[2] pry(main)* end
+=> ???
+2[3] pry(main)> hello
+???
+=> ???
+[4] pry(main)> byebye
+???
+=> ???
+[5] pry(main)> x = "changed"
+=> ???
+[6] pry(main)> exit
+program resumes here. Value of x is: ???
+
+
+
+[1] pry(main)> puts x
+10
+=> nil
+[2] pry(main)> def hello
+[2] pry(main)*   puts "Hello World"
+[2] pry(main)* end  
+=> :hello
+[3] pry(main)> hello
+Hello World
+=> nil
+[4] pry(main)> byebye
+bye bye world!!!
+=> nil
+[5] pry(main)> x = "changed"
+=> "changed"
+[6] pry(main)> exit
+program resumes here. Value of x is: changed.
+
+
+27. ¿Cuales son las diferencias entre la ejecución del programa "Hola Mundo" con el interprete interactivo y con pry?
+
+con pro solo devuelve el Hola mundo, mientras que con irb muestra todo lo que hace (2.1.1 :001 > puts "Hola Mundo"
+Hola Mundo
+ => nil 
+2.1.1 :002 >)
+
+
+
