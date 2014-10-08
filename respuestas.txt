@@ -1,0 +1,16 @@
+18. ¿Cual es el resultado de la siguiente operacion?
+
+2.0.0-p247 :001 > puts "Hello world"
+???
+=> ???
+2.0.0-p247 :002 >
+
+2.1.1 :001 > puts "Hello world"
+Hello world
+ => nil 
+2.1.1 :002 >
+
+
+21. ¿Cuales son las diferencias entre la ejecución del programa "Hola Mundo" con el interprete de Ruby (ruby helloWorld.rb) y el interprete interactivo del ejercicio anterior?
+
+Al ejecutarlo con el interprete vemos toda la información, vemos el puts lo que devuelve y el resultado de evaluar la expresión, mientras que al ejecutarlo con Ruby helloworld.rb solo veremos el “Hola Mundo”
