@@ -13,7 +13,7 @@ Hello world
 
 21. ¿Cuales son las diferencias entre la ejecución del programa "Hola Mundo" con el interprete de Ruby (ruby helloWorld.rb) y el interprete interactivo del ejercicio anterior?
 
-Al ejecutarlo con el interprete vemos toda la información, vemos el puts lo que devuelve y el resultado de evaluar la expresión, mientras que al ejecutarlo con Ruby helloworld.rb solo veremos el “Hola Mundo”
+	Al ejecutarlo con el interprete vemos toda la información, vemos el puts lo que devuelve y el resultado de evaluar la expresión, mientras que al ejecutarlo con Ruby helloworld.rb solo veremos el “Hola Mundo”
 
 
 26. ¿Cual es el resultado de cada una de las siguientes operaciones?
@@ -58,10 +58,477 @@ program resumes here. Value of x is: changed.
 
 27. ¿Cuales son las diferencias entre la ejecución del programa "Hola Mundo" con el interprete interactivo y con pry?
 
-con pro solo devuelve el Hola mundo, mientras que con irb muestra todo lo que hace (2.1.1 :001 > puts "Hola Mundo"
+	con pry solo devuelve el Hola mundo (se ejecuta el programa tal cual), mientras que con irb muestra todo lo que hace (2.1.1 :001 > puts "Hola Mundo"
 Hola Mundo
  => nil 
-2.1.1 :002 >)
+2.1.1 :002 >) es decir, como si fuéramos paso a paso con el interprete.
 
+
+34. ¿Que diferencia hay entre "\t\n" y ’\t\n’?
+
+	El primero (comillas dobles) se interpreta como caracteres especiales, mientras que el segundo (comillas simples) se interpreta de forma literal.
+
+
+35. ¿Como funciona %q? ¿Que es %q{hello world\n}? ¿Que es %q{’a’ ’b’ ’c’}?
+
+%q coloca entre comillas simples la cadena que se introduce entre los símbolos {}, por lo que el \n no se interpreta como salto de línea.
+	%q{’a’ ’b’ ’c’} hace que las comillas simples se interpreten de forma literal.
+
+
+36. ¿Cómo funciona %Q? ¿Qué es %Q{hello world\n}? ¿Qué es %Q{"a" "b" "c"}?
+
+	%Q coloca entre comillas dobles la cadena que se introduce entre los símbolos {}, por lo que el \n se interpreta como salto de línea.
+	%Q{"a" "b" "c"} hace que las comillas dobles se interpreten de forma literal.
+
+
+37. ¿Que queda en c?
+>> a = 4
+=> 4
+>> b = 2
+=> 2
+>> c = <<HERE
+0:0:0" --#{a}--
+0:0:0" --#{b}--
+0:0:0" HERE38. ¿Qu´e queda en c?
+0:0:0> a = 4
+=> 4
+0:0:0> b =2
+=> 2
+0:0:0> c = <<’HERE’
+0:0:0’ --#{a}--
+0:0:0’ --#{b}--
+0:0:0’ HERE
+
+	A c se le hace una asignación multilínea. Almacena la cadena:
+--4--
+--2--
+es decir, que interpreta #{a} y #{b} como los valores que se le asignaron a esas variables a y b
+HERE muestra la siguiente cadena  => "--4--\n--2--\n" 
+
+
+39. s = "hello". ¿Cuál es el valor de las siguientes expresiones?
+s[0,2]
+	el valor es "he"
+s[-1,1]
+	el valor es "o"
+s[0,10]
+	el valor es "hello"
+
+40. ¿Qué queda en g?
+>> g = "hello"
+=> "hello"
+>> g << " world"
+
+	En g queda la cadena "hello world", ya que el operador << añade a la cadena que ya existía en g una nueva cadena
+
+
+41. ¿Que queda en e?
+>> e = ’.’*3
+
+	En e queda la cadena "...", pues se toma la cadena indicada entre comillas simples (en este caso es sólo el caracter .) y se concatena con sí misma tantas veces como se indiquen tras el operador *
+
+
+42. ¿Cuál es el resultado?
+>> a = 1
+=> 1
+>> "#{a=a+1} "*3
+
+	El resultado es la cadena "2 2 2", pues se evalúa la expresión entre los símbolos #{}, que da como resultado 2, y se concatena tres veces consigo mismo por el operador *3
+
+
+43. ¿Que es esto? %w[this is a test]
+
+	%w separa la cadena introducida entre corchetes en varias subcadenas. Las separa por los espacios en blanco, de forma que queda como resultado ["this", "is", "a", "test"]
+
+
+44. ¿Que es esto? %w[\t \n]
+
+	No se interpretan los caracteres especiales, se interpretan literalmente como la cadena "\t \n" y separa las subcadenas \t y \n
+
+
+45. ¿Que es esto? %W[\t \n]
+
+	En este caso también se separan las subcadenas pero sí se interpretan como caracteres especiales.
+
+46. ¿Que contiene nils? nils = Array.new(3)
+
+	nils es un array de tamaño 3 y que no contiene nada en ninguna posición (es decir, contiene nil).
+
+47. ¿Que contiene zeros? zeros = Array.new(3, 0)
+
+	zeros es un array de tamaño tres que contiene un 0 en cada posición.
+
+48. ¿Que queda en b?
+>> x = [[1,2],[3,4]]
+=> [[1, 2], [3, 4]]
+>> b = Array.new(x)
+
+	En b queda un array con los valores 1, 2, 3 y 4
+
+
+49. ¿Que queda en c?
+>> c = Array.new(3) { |i| 2*i }
+
+	En c queda un array de tamaño 3 con los valores 0, 2 y 4, porque toma el iterador i indicado entre || y lo multiplica por 2 (esto se indica)
+
+50. ¿Cual es el resultado de cada una de estas operaciones?
+>> a = (’a’..’e’).to_a
+=> ["a", "b", "c", "d", "e"]
+>> a[1,1]
+=> ???
+>> a[-2,2]
+=> ???
+>> a[0..2]
+=> ???
+>> a[0...1]
+=> ???
+>> a[-2..-1]
+=> ???
+
+	a = (’a’..’e’).to_a
+	a contiene las cadenas "a", "b", "c", "d", "e"
+
+	a[1,1] contiene 1 caracter comenzando desde el caracter 1 (como se numeran del 0 al 4, el caracter mostrado es "b")
+
+	a[-2,2] contiene dos caracteres comenzando desde el caracter -2 (que es "d"), por lo que se muestra "d","e"
+
+	a[0..2] contiene los caracteres desde el 0 hasta el 2, es decir, "a","b","c" 
+
+	a[0...1] contiene los caracteres desde el 0 hasta el 1 pero numerándolos del 1 al 5, es decir, que muestra "a"
+
+
+	a[-2..-1] contiene los caracteres desde el -2 hasta el -1 (desde "d" hasta "e") por lo que muestra "d","e"
+51. ¿Cual es el resultado de cada una de estas operaciones?
+>> a
+=> ["a", "b", "c", "d", "e"]
+>> a[0,2] = %w{A B}
+=> ["A", "B"]
+>> a
+=> ???
+>> a[2..5] = %w{C D E}
+=> ["C", "D", "E"]
+>> a
+=> ???
+>> a[0,0] = [1,2,3]
+=> [1, 2, 3]
+>> a
+=> ???
+>> a[0,2] = []
+=> []
+>> a
+=> ???
+>> a[-1,1] = [ ’Z’ ]
+=> ["Z"]
+>> a
+=> ???
+>> a[-2,2] = nil
+=> nil
+>> a
+=> ???
+
+	a[0,2] = %w{A B} sustituye dos caracteres desde el 0 ("a" y "b") por la expresión (en este caso pone en mayúsculas A y B)
+
+	a[2..5] = %w{C D E} sustituye desde el caracter 2 hasta el 5 por la expresión (pone en mayúsculas las letras restantes)
+
+	a[0,0] = [1,2,3] añade al principio del array los caracteres "1" "2" y "3"
+
+	a[0,2] = [] sustituye los dos primeros caracteres por vacío (los elimina)
+
+	a[-1,1] = [ 'Z' ] sustituye el último caracter por "Z"
+
+	a[-2,2] = nil elimina los dos últimos caracteres
+
+52. ¿Cual es el resultado de cada una de estas operaciones?
+>> a = (1...4).to_a
+=> ???
+>> a = a + [4, 5]
+=> ???
+>> a += [[6, 7, 8]]
+=> ???
+>> a = a + 9
+=> ???
+
+	a = (1..4).to_a crea un array en a con las cadenas "1", "2", "3" y "4"
+
+	a = a + [4, 5] concatena el array [4, 5] con a, es decir, a queda de la forma: [1, 2, 3, 4, 4, 5]
+
+	a += [[6, 7, 8]] concatena el array como el siguiente elemento, de forma que queda: [1, 2, 3, 4, 4, 5, [6, 7, 8]]
+
+	a = a + 9 produce un error porque se trata a 9 como un entero y el array es de caracteres
+
+
+53. ¿Cual es el resultado de cada una de estas operaciones?
+>> x = %w{a b c b a}
+=> ???
+>> x = x - %w{b c d}
+=> ???
+
+	x = %w{a b c b a} crea el array en x con los caracteres indicados en la expresión
+
+	x = x - %w{b c d} elimina del array los caracteres indicados en la expresión, quedando [a, a]
+
+
+54. ¿Cual es el resultado de cada una de estas operaciones?
+>> z = [0]*8
+=> ???
+
+	z = [0]*8 crea un array en z formado por ocho caracteres 0
+
+55. ¿Cual es el resultado de cada una de estas operaciones?
+>> a = []
+=> []
+>> a << 1
+=> ???
+>> a << 2 << 3
+=> ???
+>> a << [4, 5, 6]
+=> ???
+>> a.concat [7, 8]
+=> ???
+
+	a = [] crea un array vacío en a
+
+	a << 1 añade el caracter "1" al array
+
+	a << 2 << 3 añade los caracteres "2" y "3" al array
+
+	a << [4, 5 ,6] añade el array [4, 5, 6] a la siguiente posición de a
+
+	a.concat [7, 8] añade los caracteres "7" y "8" al array
+
+56. ¿Cual es el resultado de cada una de estas operaciones?
+>> a = [1, 1, 2, 2, 3, 3, 4]
+=> [1, 1, 2, 2, 3, 3, 4]
+>> b = [5, 5, 4, 4, 3, 3, 2]
+=> [5, 5, 4, 4, 3, 3, 2]
+>> c = a | b
+=> ???
+>> d = b | a
+=> ???
+>> e = a & b
+=> ???
+>> f = b & a
+=> ???
+
+	c = a | b realiza la unión lógica de los dos arrays (todos los elementos una única vez), quedando [1, 2, 3, 4, 5]
+
+	d = b | a es lo mismo pero quedan ordenados en sentido inverso
+
+	e = a & b realiza la intersección de los dos arrays (los elementos comunes una única vez), quedando [2, 3, 4]
+
+	f = b & a es lo mismo pero en sentido inverso
+
+57. ¿Que resultados dan las siguientes operaciones?
+>> a = 1..10
+=> 1..10
+>> a.class
+=> Range
+>> a.to_a
+=> ???
+>> b = 1...10
+=> 1....10
+>> b.to_a
+=> ???
+>> b.include? 10
+=> ???
+>> b.include? 8
+=> ???
+>> b.step(2) {|x| print "#{x} " }
+=> ???
+>> 1..3.to_a
+=> ???
+
+	a = 1..10 añade el rango "1..10" en a
+
+	a.class indica la clase de a (es un rango que va desde 1 a 10)
+
+	a.to_a expande todo el rango y lo muestra: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
+
+	b = 1...10 añade el rango "1...10" en b
+
+	b.to_a expande el rango: [1, 2, 3, 4, 5, 6, 7, 8, 9]
+
+	b.include? 10 calcula si el rango incluye el valor 10 y devuelve la respuesta (false)
+
+	b.include? 8 calcula si el ragog incluye el valor 8 y devuelve la respuesta (true)
+
+	b.step(2) {|x| print "#{x} " } muestra los valores del rango tomados de dos en dos (step 2)
+
+	1..3.to_a genera un error
+
+
+58. ¿Que resultados dan las siguientes operaciones?
+>> r = 0...100
+=> 0....100
+>> r.member? 50
+=> ???
+>> r.include? 99.9
+=> ???
+>> r.member? 99.9
+=> ???
+
+	r.member? 50 calcula si el elemento "50" es un miembro del array y devuelve la respuesta (true)
+
+	r.include? 99.9 calcula si el rango incluye el valor 99.9 y devuelve la respuesta (true)
+
+	r.member? 99.9 calcula si el elemento "99.9" es un miembro del array y devuelve la respuesta (true)
+
+
+59. ¿Qu´e resultados dan las siguientes operaciones?
+>> true.class
+=> ???
+>> false.class
+=> ???
+>> puts "hello" if 0
+=> ???
+>> puts "hello" if nil
+=> ???
+>> puts "hello" if ""
+=> ???
+
+	true.class: TrueClass
+
+	false.class: FalseClass
+
+	puts "hello" if 0 es una sentencia condicional: escribe por pantalla "hello" si se cumple la condición (se cumple siempre en este caso)
+
+	puts "hello" if nil es una sentencia condicional como la anterior pero en este caso la condición no se cumple nunca
+
+	puts "hello" if "" genera un error porque la condición no es un evaluable, ya que es una cadena vacía y no una expresión
+
+
+60. ¿Que resultados dan las siguientes operaciones?
+>> x = :sym
+=> :sym
+>> x.class
+6=> ???
+>> x == ’sym’
+=> ???
+>> x == :sym
+=> ???
+>> z = :’a long symbol’
+=> :"a long symbol"
+>> z.class
+=> ???
+>> x == ’sym’.to_sym
+=> ???
+>> x.to_s == ’sym’
+=> ???
+
+	x = :sym
+
+	x.class indica la clase de x (Symbol)
+
+	x == 'sym' compara la cadena 'sym' con x y devuelve si son iguales o no (false, porque no lo son ya que x es un símbolo y sym una cadena)
+
+	x == :sym calcula si x es el símbolo (no la cadena) sym y devuelve la respuesta (true)
+
+	z = :' a long symbol'
+
+	z.class indica la clase de z (Symbol)
+
+	x == 'sym'.to_sym calcula si x es "sym" convertido a símbolo (es decir, compara si x es el símbolo sym) y devuelve true porque lo es
+
+	x.to_s == 'sym' convierte el valor de x en string y lo compara con la cadena 'sym'. Como son iguales devuelve true
+
+
+61. ¿Que resultados se dan?
+>> s = "Ruby"
+=> "Ruby"
+>> t = s
+=> ???
+>> t[-1] = ""
+=> ???
+>> print s
+???
+>> t = "Java"
+=> ???
+>> print s, t
+???
+
+	s = "Ruby"
+	t = s
+
+	t[-1] = "" elimina último caracter de la cadena "Ruby" contenida en t
+
+	print s muestra que en el paso anterior también se eliminó el caracter en s.
+
+	t = "Java"
+
+	print s, t muestra s y t. Se observa que esta vez s no ha cambiado porque es el valor original, mientras que la copia t sí.
+
+
+62. ¿Cual es el resultado?
+>> "%d %s" % [3, "rubies"]
+=> ???
+
+	"%d %s" % [3, "rubies"] muestra "3 rubies" por pantalla
+
+
+63. ¿Cuales son los resultados?
+>> x, y = 4, 5
+=> ???
+>> z = x > y ? x : y
+=> ???
+>> x,y,z = [1,2,3]
+=> ???
+
+	x, y = 4, 5 asigna 4 a x; luego 5 a y
+
+	z = x > y ? x : y "si x es mayor que y, devuelve x; devoler y si no lo es". Como y es mayor, asigna 5 a z
+
+	x,y,z = [1,2,3] cambia los valores de x, y z por 1, 2 y 3 respectivamente
+
+64. ¿Que resultados dan las siguientes operaciones?
+>> x = { :a => 1, :b => 2 }
+=> {:b=>2, :a=>1}
+>> x.keys
+=> ???
+>> x.values
+=> ???
+>> x[:c] = 3
+=> 3
+>> x
+=> ???
+>> x.delete(’a’)
+=> nil
+>> x
+=> ???
+>> x.delete(:a)
+=> 1
+>> x
+=> ???
+>> x = { :a => 1, :b => 2, :c => 4 }
+=> {:b=>2, :c=>4, :a=>1}
+7>> x.delete_if { |k,v| v % 2 == 0 }
+=> ???
+>> x
+=> ???
+
+	x = { :a => 1, :b => 2 } crea dos símbolos a y b con valores 1 y 2 en x
+
+	x.keys indica las claves de los símbolos (a y b)
+
+	x.values indica los valores de los símbolos (1 y 2)
+
+	x[:c] = 3 añade el símbolo c con valor 3
+
+	x.delete(:a) elimina el símbolo a
+
+	x = { :a => 1, :b => 2, :c => 4 }
+
+	x.delete_if { |k,v| v % 2 == 0 } borra los dos primeros parámetros del array (c y b) si el módulo de su valor entre 2 da 0 (realmente los borra porque ese es el resultado de la operación)
+
+
+65. ¿Que hace la siguiente sentencia? counts = Hash.new(0) ¿Que diferencia hay con la asignacion counts = {}?
+
+	Lo que hace es asignar un array vació de símbolos a count. La diferencia es que la segunda asignación no se refiere a símbolos sino a caracteres.
+
+
+66. ¿Que retorna esta expresion regular? ’hello world, hello LPP’.scan /\w+/
+
+	Evalúa la cadena de acuerdo a la expresión regular del final. Como la expresión no admite símbolos blancos o espacios, separa las cuatro palabras en subcadenas.
+
+67. Cierre la sesion.
 
 
